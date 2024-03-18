@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Login or sign up to continue</h2>
+<!-- Login functionality:-->
+<form action="/login" method="POST">
+<p>
+<input type="text" name="username" placeholder="Username"></p>
+<p>
+<input type="password" name="password" placeholder="Password"></p>
+<input type="submit" value="Login">
+</form>
+{% if login_message %}
+<p><b>{{ login_message }}</b></p>
+{% endif %}<br>
+
+<!--Sign up/account creation functionality:-->
+<form action="/signup" method="POST">
+<p>
+<input type="text" name="username" placeholder="Username"></p>
+<p>
+<input type="password" name="password1" placeholder="Password"></p>
+<p>
+<input type="password" name="password" placeholder="Confirm password"></p>
+<input type="submit" value="Create account">
+</form>
+{% if signup_message %}
+<p><b>{{ signup_message }}</b></p>
+{% endif %}<br>
+<h5>Or</h5>
+<form action="/home_page" method="POST">
+    <input type="submit" value="Continue without login or signup">
+</form>
+{% endblock %}
+

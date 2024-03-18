@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+{% if session['username'] %}
+<form action="/drink/create" method="POST">
+    <p>Beverage name:<br>
+    <input type="text" name="drink_name"></p><br>
+
+    <p>Alcohol percentage (%):<br>
+    <input type="number" step="0.1" name="drink_percentage"></p><br>
+
+    <p>What category suits the beverage best:<br>
+    {% for category in categories %}
+    <input type="radio" name="drink_category" value="{{ category.category }}">{{ category.category }}<br>
+    {% endfor %}</p>
+    <input type="hidden" name="category_id" value="{{ id }}">
+
+    <p>From which stores can the beverage be found:<br>
+    {% for store in stores %}
+    <input type="checkbox" name="drink_store" value="{{ store.name }}">{{ store.name }}<br>
+    {% endfor %}</p>
+
+    <p>Approximate price for the beverage (€):<br>
+    <input type="number" step="0.01" name="drink_price"></p><br>
+<input type="submit" value="Add new beverage">
+</form>
+<br>
+
+
+{% else %}
+<h2>You need to login or sign up to add a new beverage</h2>
+{% endif %}
+{% endblock %}

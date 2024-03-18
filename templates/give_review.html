@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+{% if session['username'] %}
+<h2>Give a review for {{ drink.name }}</h2>
+<h5>If you have already reviewed {{ drink.name }}, your old review will be deleted and the new review will remain!</h5>
+<form action="/review/add/{{ drink.id }}" method="POST">
+    <p><h6>Give a score for {{ drink.name }}:</h6>
+    1:<input type="radio" name="score" value="1"><br>
+    2:<input type="radio" name="score" value="2"><br>
+    3:<input type="radio" name="score" value="3"><br>
+    4:<input type="radio" name="score" value="4"><br>
+    5:<input type="radio" name="score" value="5"><br>
+    6:<input type="radio" name="score" value="6"><br>
+    7:<input type="radio" name="score" value="7"><br>
+    8:<input type="radio" name="score" value="8"><br>
+    9:<input type="radio" name="score" value="9"><br>
+    10:<input type="radio" name="score" value="10">
+    </p>
+    <p><h6>Write a review for {{ drink.name }}:</h6>
+    <input type="text" name="review">
+    </p>
+    <input type="submit" value="Submit your review as {{ session['username'] }}">
+</form>
+<br>
+{% else %}
+<h2>You need to login or sign up to review {{ drink.name }}</h2>
+{% endif %}
+{% endblock %}

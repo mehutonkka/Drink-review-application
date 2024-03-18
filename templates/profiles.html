@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>All user profiles</h2>
+<form action="/profiles_s" method="GET">
+    <p><input type="text" name="s_filter" placeholder="Search for username">
+    <input type="submit" value="Search"></p>
+</form>
+<hr>
+{% for name in profiles %}
+<a href="/profile/{{ name[0] }}">{{ name[0] }}</a>
+<hr>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Welcome to the alcoholic beverage review application</h2>
+
+<br>
+
+<h4>Top 10 beverages based on average score:</h4>
+<p>Beverage name - Average score</p>
+<hr>
+<p> 
+{% for drink in top10 %}
+{{ drink.name }} - {{ drink.avg }}/10
+</p>
+<hr>
+{% endfor %}
+
+<h4>Top 5 users with most reviews:</h4>
+<p>Username - Amount of reviews</p>
+<hr>
+<p>
+    {% for user in top5 %}
+    {{user.username}} - {{ user.count }}
+</p>
+<hr>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Profile for {{ username }}</h2>
+
+
+<h6>All reviews from {{ username }}</h6>
+<hr>
+{% for review in reviews %}
+{{ review.name }} - {{ review.score }}/10: "{{ review.review }}" 
+<hr>
+{% endfor %}
+
+{% endblock %}

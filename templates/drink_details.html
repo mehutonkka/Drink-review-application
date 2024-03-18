@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ drink.name }}</h2>
+
+<h5>Category:</h5>
+    {{ category }}
+</p>
+<h5>General price for {{ drink.name }}:</h5>
+    {{ drink.price}}€
+</p>
+<h5>Alcohol percentage:</h5>
+    {{ drink.percentage }}%
+</p>
+<h5>Stores from which you can buy {{ drink.name }}:</h5>
+    {% for store in stores %}
+    {{ store.name }}<br>
+    {% endfor %}
+</p>
+
+<h5><a href="/review/give/{{ drink.id }}">Give a review for {{ drink.name }}</a></h5>
+
+
+<h5>All reviews for {{ drink.name }}:</h5><hr>
+    {% for review in reviews %}
+    {{ review.username }} rated {{ review.score }}/10:<br>"{{ review.review }}"
+    <hr>
+    {% endfor %}
+</p>
+
+{% endblock %}
+
+
