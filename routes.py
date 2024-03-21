@@ -13,6 +13,10 @@ def index():
 @app.route("/login", methods=["POST"])
 def login():
     username = request.form["username"]
+    if len(username) > 20:
+        return render_template("index.html", login_message='Username is too long!')
+    if len(password) > 30:
+        return render_template("index.html", login_message='Password is too long!')
     password = request.form["password"]
     result = users.login(username, password)
     if result == 1:
@@ -30,6 +34,10 @@ def signup():
     username = request.form["username"]
     password = request.form["password"]
     password1 = request.form["password1"]
+    if len(username) > 20:
+        return render_template("index.html", signup_message='Username is too long!')
+    if len(password) > 30:
+        return render_template("index.html", signup_message='Password is too long!')
     session["username"] = username
     result = users.signup(username, password, password1)
     if result == 0:

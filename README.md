@@ -1,4 +1,5 @@
 # Drink review application
+Ideas:
 An application for publishing reviews and scores on different **alcoholic drinks**.
 
 User creation and login to keep track of reviews and restrict one review/score per person on each drink. Also to bind reviews to distinct users.
@@ -31,3 +32,15 @@ Top 10 list of the best-scoring drinks.
 Top 5 list of contributors who have made the most reviews.
 
 Admin to control reviews and other information.
+
+
+Current status:
+- Almost all functionalities are working
+- Still need to make sure that users can only put acceptable inputs
+- All of the styling must be done
+- Code must be made more clean/efficient
+
+New changes:
+- Added restrictions to username and password lengths
+- Username must be less than 20 characters and password less than 30 characters
+- Put these restrictions to both login and sign up functionalities
