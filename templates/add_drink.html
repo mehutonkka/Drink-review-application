@@ -26,6 +26,7 @@
     <b>{{ message }}</b>
     {% endif %}
 <input type="submit" value="Add new beverage">
+<input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>
 <br>
 

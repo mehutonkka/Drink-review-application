@@ -20,6 +20,7 @@
     <input type="text" name="review">
     </p>
     <input type="submit" value="Submit your review as {{ session['username'] }}">
+    <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
     {% if message %}
     <b>{{ message }}</b>
     {% endif %}

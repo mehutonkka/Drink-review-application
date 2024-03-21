@@ -42,5 +42,4 @@ Current status:
 
 
 New changes:
-- Added restrictions to givig reviews
-- Review cannot be longer than 200 characters
+- Added countermeasures for CSRF voulnerability

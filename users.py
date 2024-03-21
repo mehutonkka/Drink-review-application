@@ -3,6 +3,7 @@ from sqlalchemy.sql import text
 from werkzeug.security import check_password_hash, generate_password_hash
 
 
+
 def user_check(username):
     sql = text("SELECT id, password FROM users WHERE username=:username")
     result = db.session.execute(sql, {"username":username})
@@ -49,3 +50,5 @@ def top5_users():
     sql = text("SELECT u.username, COUNT(r.user_id) FROM users u INNER JOIN reviews r ON u.id=r.user_id GROUP BY u.id ORDER BY COUNT(r.user_id) DESC LIMIT 5")
     result = db.session.execute(sql)
     return result.fetchall()
+
+

@@ -1,8 +1,9 @@
 from app import app
 import users
 import drinks
-from flask import redirect, render_template, request, session
+from flask import redirect, render_template, request, session, abort
 from werkzeug.security import check_password_hash, generate_password_hash
+import secrets
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -24,6 +25,7 @@ def login():
         return render_template("index.html", login_message='Incorrect username!')
     elif result == 0:
         session["username"] = username
+        session["csrf_token"] = secrets.token_hex(16)
         return redirect("/home_page")
     else:
         return render_template("index.html", login_message='Incorrect username/password!')
@@ -40,6 +42,7 @@ def signup():
     if len(password) > 30:
         return render_template("index.html", signup_message='Password is too long!')
     session["username"] = username
+    session["csrf_token"] = secrets.token_hex(16)
     result = users.signup(username, password, password1)
     if result == 0:
         return redirect("/home_page")
@@ -105,6 +108,8 @@ def add_drink():
 
 @app.route("/drink/create", methods=["POST"])
 def create_drink():
+    if session["csrf_token"] != request.form["csrf_token"]:
+        abort(403)
     categories = drinks.category_list()
     stores = drinks.store_list()
     name = request.form["drink_name"]
@@ -155,6 +160,8 @@ def give_review(drink_id):
 
 @app.route("/review/add/<int:drink_id>", methods=["POST", "GET"])
 def add_review(drink_id):
+    if session["csrf_token"] != request.form["csrf_token"]:
+        abort(403)
     review = request.form["review"]
     score = request.form["score"]
     if len(review) > 200:
