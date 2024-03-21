@@ -41,8 +41,8 @@ Current status:
 - Code must be made more clean/efficient
 
 
-Current status:
-- Almost all functionalities are working
-- Still need to make sure that users can only put acceptable inputs
-- All of the styling must be done
-- Code must be made more clean/efficient
+New changes:
+- Input restrictions to signup and login
+- Usernames restricted to 20 characters
+- Passwords restricted to 30 characters
+- Created requirements.txt file
