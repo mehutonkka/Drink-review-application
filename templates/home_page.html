@@ -1,26 +1,51 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Welcome to the alcoholic beverage review application</h2>
-
 <br>
+<h2 class="center">Welcome to the alcoholic beverage review application</h2>
 
-<h4>Top 10 beverages based on average score:</h4>
-<p>Beverage name - Average score</p>
-<hr>
-<p> 
-{% for drink in top10 %}
-{{ drink.name }} - {{ drink.avg }}/10
-</p>
-<hr>
-{% endfor %}
+<div class="container">
+    <div class="column">
+        <br>
+        <h4 class="center">Top 10 beverages based on average score:</h4>
 
-<h4>Top 5 users with most reviews:</h4>
-<p>Username - Amount of reviews</p>
-<hr>
-<p>
-    {% for user in top5 %}
-    {{user.username}} - {{ user.count }}
-</p>
-<hr>
-{% endfor %}
+        <table class="table">
+            <thead class="table">
+                <tr class="center">
+                    <th scope="col">Name</th>
+                    <th scope="col">Average score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for drink in top10 %}
+                <tr class="center">
+                    <td><a href="/drink/{{ drink.id }}">{{ drink.name }}</a></td>
+                    <td>{{ drink.avg }}/10</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="column">
+        <br>
+        <h4 class="center">Top 5 users with most reviews:</h4>
+
+        <table class="table">
+            <thead class="table">
+                <tr class="center">
+                    <th scope="col">Username</th>
+                    <th scope="col">Amount of reviews</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in top5 %}
+                <tr class="center">
+                    <td><a href="/profile/{{ user.username }}">{{ user.username }}</a></td>
+                    <td>{{ user.count }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 {% endblock %}

@@ -1,13 +1,28 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Profile for {{ username }}</h2>
+<div class="center">
+    <br>
+    <h2>Profile for {{ username }}</h2>
+    <br>
 
-
-<h6>All reviews from {{ username }}</h6>
-<hr>
-{% for review in reviews %}
-{{ review.name }} - {{ review.score }}/10: "{{ review.review }}" 
-<hr>
-{% endfor %}
-
+    <h6>All reviews from {{ username }}:</h6>
+    <table class="table">
+        <thead class="table">
+            <tr>
+                <th scope="col">Beverage name</th>
+                <th scope="col">Review score</th>
+                <th scope="col">Written review</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for review in reviews %}
+            <tr>
+                <td><a href="/drink/{{ review.drink_id }}">{{ review.name }}</a></td>
+                <td>{{ review.score }}/10</td>
+                <td>"{{ review.review }}"</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

@@ -42,4 +42,10 @@ Current status:
 
 
 New changes:
-- Added countermeasures for CSRF voulnerability
+- Made the whole website look more pleasant
+- Divided things into columns
+- Changed href link colors
+- Added href links to all occurences of drink names and usernames
+- Made different classes into base.html
+- Coded a functionality into base.html that makes sure that on smaller screens like mobile screens, the columns go over eachother and not to the side
+- Other small alterations to styling

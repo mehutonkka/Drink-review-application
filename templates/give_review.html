@@ -17,7 +17,7 @@
     10:<input type="radio" name="score" value="10">
     </p>
     <p><h6>Write a review for {{ drink.name }}:</h6>
-    <input type="text" name="review">
+    <textarea type="text" name="review"></textarea>
     </p>
     <input type="submit" value="Submit your review as {{ session['username'] }}">
     <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">

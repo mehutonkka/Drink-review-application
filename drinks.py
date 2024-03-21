@@ -95,6 +95,6 @@ def list_user_reviews(user_id):
     return result.fetchall()
 
 def top_10_drinks():
-    sql = text("SELECT d.name, AVG(r.score)::numeric(10,1) from reviews r INNER JOIN drinks d ON r.drink_id=d.id GROUP BY d.name ORDER BY avg(r.score) DESC LIMIT 10")
+    sql = text("SELECT d.name, d.id, AVG(r.score)::numeric(10,1) from reviews r INNER JOIN drinks d ON r.drink_id=d.id GROUP BY d.name, d.id ORDER BY avg(r.score) DESC LIMIT 10")
     result = db.session.execute(sql)
     return result.fetchall()

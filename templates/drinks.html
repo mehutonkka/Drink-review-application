@@ -1,30 +1,49 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Search for beverages or <a href="/drink/add">add a new beverage</a></h2>
-<br>
-<form action="/drinks_s" method="GET">
+<div class="center">
+    <br>
+    <h2>Search for beverages or <a href="/drink/add">add a new beverage</a></h2>
+    <br>
+    <form action="/drinks_s" method="GET">
+        
+    <p><input type="text" name="s_filter" placeholder="Search for beverage name">
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Choose category
+        </button>
+        <ul class="dropdown-menu">
+            <li>All: <input type="radio" name="category_id" value="0" checked></li>
+            {% for category in categories %}
+            <li>{{ category.category }}:<input type="radio" name="category_id" value="{{ category.id }}"></li>
+            {% endfor %}
+        </ul>
+        <input type="submit" value="Search"><br>
+    </div>
+
+    </p>
+    </form>
     
-<p><input type="text" name="s_filter" placeholder="Search for beverage name">
-<div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Choose category
-    </button>
-    <ul class="dropdown-menu">
-        <li>All: <input type="radio" name="category_id" value="0" checked></li>
-        {% for category in categories %}
-        <li>{{ category.category }}:<input type="radio" name="category_id" value="{{ category.id }}"></li>
-        {% endfor %}
-    </ul>
-    <input type="submit" value="Search"><br>
+    <table class="table">
+        <thead class="table">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Alcohol percentage</th>
+                <th scope="col">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for drink in result %}
+            <tr>
+                <td><a href="/drink/{{ drink.id }}">{{ drink.name }}</a></td>
+                <td>{{ drink.percentage }}%</td>
+                <td>{{ drink.price }}€</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
 </div>
 
-</p>
-</form>
-<hr>
-{% for drink in result %}
-<li><a href="/drink/{{ drink.id }}">{{ drink.name }}</a> {{ drink.percentage }}% {{ drink.price }}€</li>
-<hr>
-{% endfor %}
 {% endblock %}
 
 

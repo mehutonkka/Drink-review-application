@@ -1,32 +1,97 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>{{ drink.name }}</h2>
+<div>
+    <br>
+    <h2 class="center">{{ drink.name }}</h2>
+    <h5 class="center"><a href="/review/give/{{ drink.id }}">Give a review for {{ drink.name }}</a></h5>
 
-<h5>Category:</h5>
-    {{ category }}
-</p>
-<h5>General price for {{ drink.name }}:</h5>
-    {{ drink.price}}€
-</p>
-<h5>Alcohol percentage:</h5>
-    {{ drink.percentage }}%
-</p>
-<h5>Stores from which you can buy {{ drink.name }}:</h5>
-    {% for store in stores %}
-    {{ store.name }}<br>
-    {% endfor %}
-</p>
+    <div class="container">
+        <div class="column">
+            <br>
+            <h5 class="center">Details for {{ drink.name }}</h5>
+            
+            <table class="table">
+                <thead class="table">
+                    <tr>
+                        <th scope="col">Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ category }}</td>
+                    </tr>
+                </tbody>
+            </table>
 
-<h5><a href="/review/give/{{ drink.id }}">Give a review for {{ drink.name }}</a></h5>
+            <table class="table">
+                <thead class="table">
+                    <tr>
+                        <th scope="col">Alcohol percentage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ drink.percentage }}%</td>
+                    </tr>
+                </tbody>
+            </table>
 
+            <table class="table">
+                <thead class="table">
+                    <tr>
+                        <th scope="col">General price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ drink.price }}€</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table">
+                <thead class="table">
+                    <tr>
+                        <th scope="col">Stores, from which you can buy {{ drink.name }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for store in stores %}
+                    <tr>
+                        <td>{{ store.name }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="column">
+            <div class="center">
+                <br>
+                <h5>All reviews for {{ drink.name }}</h5>
 
-<h5>All reviews for {{ drink.name }}:</h5><hr>
-    {% for review in reviews %}
-    {{ review.username }} rated {{ review.score }}/10:<br>"{{ review.review }}"
-    <hr>
-    {% endfor %}
-</p>
+                <table class="table">
+                    <thead class="table">
+                        <tr>
+                            <th scope="col">Username</th>
+                            <th scope="col">Review score</th>
+                            <th scope="col">Written review</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for review in reviews %}
+                        <tr>
+                            <td><a href="/drink/{{ review.drink_id }}">{{ review.username }}</a></td>
+                            <td>{{ review.score }}/10</td>
+                            <td>"{{ review.review }}"</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
 
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 
