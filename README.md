@@ -42,7 +42,5 @@ Current status:
 
 
 New changes:
-- Added restrictions to adding new beverage to the database
-- Name can not be longer than 30 characters
-- Alcohol percentage cannot be bigger than 100%
-- Price cannot be bigger than 100000€
+- Added restrictions to givig reviews
+- Review cannot be longer than 200 characters

@@ -20,6 +20,9 @@
     <input type="text" name="review">
     </p>
     <input type="submit" value="Submit your review as {{ session['username'] }}">
+    {% if message %}
+    <b>{{ message }}</b>
+    {% endif %}
 </form>
 <br>
 {% else %}

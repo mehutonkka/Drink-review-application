@@ -157,8 +157,12 @@ def give_review(drink_id):
 def add_review(drink_id):
     review = request.form["review"]
     score = request.form["score"]
-    drinks.create_new_review(drink_id, session["username"], review, score)
-    return drink_page(drink_id)
+    if len(review) > 200:
+        drink = drinks.drink_name(drink_id)
+        return render_template("give_review.html", drink=drink, message="That review is too long!")
+    else:
+        drinks.create_new_review(drink_id, session["username"], review, score)
+        return drink_page(drink_id)
 
 
 
