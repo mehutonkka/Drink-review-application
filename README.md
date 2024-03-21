@@ -39,8 +39,3 @@ Current status:
 - Still need to make sure that users can only put acceptable inputs
 - All of the styling must be done
 - Code must be made more clean/efficient
-
-New changes:
-- Added restrictions to username and password lengths
-- Username must be less than 20 characters and password less than 30 characters
-- Put these restrictions to both login and sign up functionalities
