@@ -13,11 +13,12 @@ def index():
 @app.route("/login", methods=["POST"])
 def login():
     username = request.form["username"]
+    password = request.form["password"]
     if len(username) > 20:
         return render_template("index.html", login_message='Username is too long!')
     if len(password) > 30:
         return render_template("index.html", login_message='Password is too long!')
-    password = request.form["password"]
+    
     result = users.login(username, password)
     if result == 1:
         return render_template("index.html", login_message='Incorrect username!')
@@ -111,7 +112,16 @@ def create_drink():
     category_id = request.form["drink_category"]
     store_ids = request.form.getlist("drink_store")
     price = request.form["drink_price"]
-    add = drinks.create_drink(name, percentage, category_id, store_ids, price)
+    
+    if len(name) > 30:
+        return render_template("add_drink.html", message="Beverage name too long!", categories=categories, stores=stores)
+    elif float(percentage) > 100:
+        return render_template("add_drink.html", message="The percentage cannot be that big!", categories=categories, stores=stores)
+    elif float(price) > 100000:
+        return render_template("add_drink.html", message="That price is way too big!", categories=categories, stores=stores)
+    else:
+        add = drinks.create_drink(name, percentage, category_id, store_ids, price)
+    
     if add == 0:
         return redirect("/home_page")
     else:

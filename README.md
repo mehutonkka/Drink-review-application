@@ -42,7 +42,7 @@ Current status:
 
 
 New changes:
-- Input restrictions to signup and login
-- Usernames restricted to 20 characters
-- Passwords restricted to 30 characters
-- Created requirements.txt file
+- Added restrictions to adding new beverage to the database
+- Name can not be longer than 30 characters
+- Alcohol percentage cannot be bigger than 100%
+- Price cannot be bigger than 100000€

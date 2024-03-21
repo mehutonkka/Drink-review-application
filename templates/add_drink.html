@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+
 {% if session['username'] %}
 <form action="/drink/create" method="POST">
     <p>Beverage name:<br>
@@ -21,6 +22,9 @@
 
     <p>Approximate price for the beverage (€):<br>
     <input type="number" step="0.01" name="drink_price"></p><br>
+    {% if message %}
+    <b>{{ message }}</b>
+    {% endif %}
 <input type="submit" value="Add new beverage">
 </form>
 <br>
