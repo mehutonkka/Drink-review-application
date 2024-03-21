@@ -39,3 +39,10 @@ Current status:
 - Still need to make sure that users can only put acceptable inputs
 - All of the styling must be done
 - Code must be made more clean/efficient
+
+
+Current status:
+- Almost all functionalities are working
+- Still need to make sure that users can only put acceptable inputs
+- All of the styling must be done
+- Code must be made more clean/efficient
