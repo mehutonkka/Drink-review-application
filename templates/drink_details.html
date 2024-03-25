@@ -80,7 +80,7 @@
                     <tbody>
                         {% for review in reviews %}
                         <tr>
-                            <td><a href="/drink/{{ review.drink_id }}">{{ review.username }}</a></td>
+                            <td><a href="/profile/{{ review.username }}">{{ review.username }}</a></td>
                             <td>{{ review.score }}/10</td>
                             <td>"{{ review.review }}"</td>
                         </tr>

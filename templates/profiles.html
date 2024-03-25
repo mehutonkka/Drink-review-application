@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="ms-me-8">
 <div class="center">
     <br>
     <h2>All user profiles</h2>
+    <br>
     <form action="/profiles_s" method="GET">
-        <p><input type="text" name="s_filter" placeholder="Search for username">
-        <input type="submit" value="Search"></p>
+        <div class="input-group mb3">
+            <input type="text" class="form-control" name="s_filter" placeholder="Search for username" aria-describedby="search_button">
+            <input type="submit" class="btn btn-outline-secondary" id="search_button" value="Search">
+        </div>
     </form>
 
 
@@ -24,5 +28,6 @@
             {% endfor %}
         </tbody>
     </table>
+</div>
 </div>
 {% endblock %}

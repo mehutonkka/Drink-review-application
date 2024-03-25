@@ -1,32 +1,51 @@
 {% extends "base.html" %}
 {% block content %}
-{% if session['username'] %}
-<h2>Give a review for {{ drink.name }}</h2>
-<h5>If you have already reviewed {{ drink.name }}, your old review will be deleted and the new review will remain!</h5>
-<form action="/review/add/{{ drink.id }}" method="POST">
-    <p><h6>Give a score for {{ drink.name }}:</h6>
-    1:<input type="radio" name="score" value="1"><br>
-    2:<input type="radio" name="score" value="2"><br>
-    3:<input type="radio" name="score" value="3"><br>
-    4:<input type="radio" name="score" value="4"><br>
-    5:<input type="radio" name="score" value="5"><br>
-    6:<input type="radio" name="score" value="6"><br>
-    7:<input type="radio" name="score" value="7"><br>
-    8:<input type="radio" name="score" value="8"><br>
-    9:<input type="radio" name="score" value="9"><br>
-    10:<input type="radio" name="score" value="10">
-    </p>
-    <p><h6>Write a review for {{ drink.name }}:</h6>
-    <textarea type="text" name="review"></textarea>
-    </p>
-    <input type="submit" value="Submit your review as {{ session['username'] }}">
-    <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
-    {% if message %}
-    <b>{{ message }}</b>
+<div class="ms-me-8">
+<div class="center">
+    <br>
+    {% if session['username'] %}
+    <h2>Give a review for {{ drink.name }}</h2>
+    <h5>If you have already reviewed {{ drink.name }}, your old review will be deleted and the new review will remain!</h5>
+    <br>
+    <form action="/review/add/{{ drink.id }}" method="POST">
+        <div class="input-group input-group-lg">
+        <label class="input-group-text" for="score_select">Give a score for {{ drink.name }}</label>
+        <select name="score" class="form-select" id="score_select">
+        <option value="1" selected>1/10</option>
+        <option value="2">2/10</option>
+        <option value="3">3/10</option>
+        <option value="4">4/10</option>
+        <option value="5">5/10</option>
+        <option value="6">6/10</option>
+        <option value="7">7/10</option>
+        <option value="8">8/10</option>
+        <option value="9">9/10</option>
+        <option value="10">10/10</option>
+        </select>
+        </div>
+
+        <br>
+
+        <div class="input-group input-group-lg">
+        <label class="input-group-text" for="review_area">Write a review for {{ drink.name }}</label>
+        <textarea type="text" name="review" class="form-control" id="review_area"></textarea><br>
+        </div>
+
+
+
+        <br>
+        <div class="input-group input-group-lg">
+        <input type="submit" class="btn btn-outline-secondary" value="Submit your review as {{ session['username'] }}">
+        <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+        {% if message %}
+        <b>{{ message }}</b>
+        {% endif %}
+        </div>
+    </form>
+    <br>
+    {% else %}
+    <h2>You need to login or sign up to review {{ drink.name }}</h2>
     {% endif %}
-</form>
-<br>
-{% else %}
-<h2>You need to login or sign up to review {{ drink.name }}</h2>
-{% endif %}
+</div>
+</div>
 {% endblock %}

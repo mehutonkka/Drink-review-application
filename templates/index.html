@@ -3,6 +3,15 @@
 <div class="center">
     <br>
     <h2>Welcome to the alcoholic beverage review application</h2>
+    <br>
+    
+        
+    
+    <form action="/home_page" method="POST">
+        <input type="submit" class="btn btn-outline-secondary" value="Continue without logging in">
+    </form>
+    <br>
+    <h5>Login to add reviews and new beverages</h5>
     
     
 </div>
@@ -10,13 +19,15 @@
     <div class="column">
         <div class="center">
         <!-- Login functionality:-->
+        <br>
         <h4>Login here</h4>
+        
         <form action="/login" method="POST">
         <p>
-        <input type="text" name="username" placeholder="Username"></p>
+        <input type="text" class="form-control" name="username" placeholder="Username"></p>
         <p>
-        <input type="password" name="password" placeholder="Password"></p>
-        <input type="submit" value="Login">
+        <input type="password" class="form-control" name="password" placeholder="Password"></p>
+        <input type="submit" class="btn btn-outline-secondary" value="Login">
         </form>
         {% if login_message %}
         <p><b>{{ login_message }}</b></p>
@@ -25,25 +36,17 @@
     </div>
     <div class="column">
         <div class="center">
-            <br><br>
-            <h4>Or</h4>
-            <form action="/home_page" method="POST">
-                <input type="submit" value="Continue without logging in">
-            </form>
-        </div>
-    </div>
-    <div class="column">
-        <div class="center">
         <!--Sign up/account creation functionality:-->
+        <br>
         <h4>Sign up here</h4>
         <form action="/signup" method="POST">
         <p>
-        <input type="text" name="username" placeholder="Username"></p>
+        <input type="text" class="form-control" name="username" placeholder="Username"></p>
         <p>
-        <input type="password" name="password1" placeholder="Password"></p>
+        <input type="password" class="form-control" name="password1" placeholder="Password"></p>
         <p>
-        <input type="password" name="password" placeholder="Confirm password"></p>
-        <input type="submit" value="Create account">
+        <input type="password" class="form-control" name="password" placeholder="Confirm password"></p>
+        <input type="submit" class="btn btn-outline-secondary" value="Create account">
         </form>
         {% if signup_message %}
         <p><b>{{ signup_message }}</b></p>

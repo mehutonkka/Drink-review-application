@@ -83,7 +83,7 @@ def drinks_search_page():
         else:
             result = drinks.list_search(s_filter)
     else:
-        if category_id:
+        if category_id != "0":
             result = drinks.list_search_category(None, category_id)
         else:
             result = drinks.list_drinks()
@@ -128,7 +128,7 @@ def create_drink():
         add = drinks.create_drink(name, percentage, category_id, store_ids, price)
     
     if add == 0:
-        return redirect("/home_page")
+        return redirect("/drinks")
     else:
         return render_template("add_drink.html", message="That beverage already exists!", categories=categories, stores=stores)
     
