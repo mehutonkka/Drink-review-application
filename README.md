@@ -42,6 +42,9 @@ Current status:
 
 
 New changes:
-- Made the whole website look more pleasant
-- Created some margins for all pages so things look more pleasant
-- Minor fixes to functionalities especially links on the page
+- Added most recent 3 reviews on home page  
+- Added newly added drinks listed on front page
+- Created admin rights
+- Only one admin can be
+- Admin can delete drinks, reviews and users to keep things moderated/factual
+- Made the admin verifications into python so one cannot delete anything by abusing the html coding

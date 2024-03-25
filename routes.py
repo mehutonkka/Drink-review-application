@@ -9,6 +9,7 @@ import secrets
 @app.route("/", methods=["GET", "POST"])
 def index():
     return render_template("index.html")
+    
 
 #Functionality to login to the website and to be redirected to the home page
 @app.route("/login", methods=["POST"])
@@ -41,10 +42,10 @@ def signup():
         return render_template("index.html", signup_message='Username is too long!')
     if len(password) > 30:
         return render_template("index.html", signup_message='Password is too long!')
-    session["username"] = username
-    session["csrf_token"] = secrets.token_hex(16)
     result = users.signup(username, password, password1)
     if result == 0:
+        session["username"] = username
+        session["csrf_token"] = secrets.token_hex(16)
         return redirect("/home_page")
     elif result == 1:
         return render_template("index.html", signup_message="The two passwords do not match!")
@@ -61,7 +62,9 @@ def logout():
 def home_page():
     top10 = drinks.top_10_drinks()
     top5 = users.top5_users()
-    return render_template("home_page.html", top10=top10, top5=top5)
+    recent = drinks.recent_reviews()
+    new = drinks.new_drinks()
+    return render_template("home_page.html", top10=top10, top5=top5, recent=recent, new=new)
 
 
 
@@ -96,9 +99,29 @@ def drink_page(drink_id):
     stores = drinks.drink_stores(drink_id)
     category = drinks.drink_category(drink_id)
     reviews = drinks.list_reviews(drink_id)
-    return render_template("drink_details.html", drink=result, stores=stores, category=category, reviews=reviews)
+    try:
+        admin = users.is_admin(session["username"])
+    except:
+        admin = None
+    return render_template("drink_details.html", drink=result, stores=stores, category=category, reviews=reviews, admin=admin)
 
+@app.route("/drink/delete/<int:drink_id>")
+def delete_drink(drink_id):
+    if users.is_admin(session["username"]):
+        drinks.delete(drink_id)
+    return redirect("/drinks")
 
+@app.route("/review/delete/<int:review_id>")
+def delete_review(review_id):
+    if users.is_admin(session["username"]):
+        drinks.delete_review(review_id)
+    return redirect("/drinks")
+
+@app.route("/profile/delete/<int:user_id>")
+def delete_user(user_id):
+    if users.is_admin(session["username"]):
+        users.delete_user(user_id)
+    return redirect("/profiles")
 
 @app.route("/drink/add")
 def add_drink():
@@ -136,12 +159,23 @@ def create_drink():
 def profile(username):
     user_id = users.user_check(username).id
     reviews = drinks.list_user_reviews(user_id)
-    return render_template("profile.html", username=username, reviews=reviews)
+    admin_value = None
+    try:
+        if username==session["username"]:
+            if users.check_admin() == False:
+                admin_value = True
+    except:
+        admin_value = None
+    return render_template("profile.html", username=username, reviews=reviews, admin=admin_value)
 
 @app.route("/profiles")
 def profiles():
     all_profiles = users.list_profiles()
-    return render_template("profiles.html", profiles=all_profiles)
+    try:
+        admin = users.is_admin(session["username"])
+    except:
+        admin = None
+    return render_template("profiles.html", profiles=all_profiles, admin=admin)
 
 
 @app.route("/profiles_s", methods=["GET"])
@@ -173,3 +207,9 @@ def add_review(drink_id):
 
 
 
+@app.route("/admin", methods=["POST","GET"])
+def admin_create():
+    username = session["username"]
+    users.create_admin(username)
+    redir = str("/profile/"+username)
+    return redirect(redir)

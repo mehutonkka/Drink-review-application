@@ -21,9 +21,14 @@
             </tr>
         </thead>
         <tbody>
-            {% for name in profiles %}
+            {% for user in profiles %}
             <tr>
-                <td><a href="/profile/{{ name[0] }}">{{ name[0] }}</a></td>
+                <td><a href="/profile/{{ user.username }}">{{ user.username }}</a></td>
+                {% if admin %}
+                <form action="/profile/delete/{{ user.id }}" method="GET">
+                    <td><button type="submit"class="btn btn-outline-danger">Delete {{ user.username }}</button></td>
+                </form>
+                {% endif %}
             </tr>
             {% endfor %}
         </tbody>

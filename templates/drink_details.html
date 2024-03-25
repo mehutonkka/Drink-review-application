@@ -4,6 +4,7 @@
     <br>
     <h2 class="center">{{ drink.name }}</h2>
     <h5 class="center"><a href="/review/give/{{ drink.id }}">Give a review for {{ drink.name }}</a></h5>
+    
 
     <div class="container">
         <div class="column">
@@ -83,6 +84,11 @@
                             <td><a href="/profile/{{ review.username }}">{{ review.username }}</a></td>
                             <td>{{ review.score }}/10</td>
                             <td>"{{ review.review }}"</td>
+                            {% if admin %}
+                            <form action="/review/delete/{{ review.id }}" method="GET">
+                                <td><button type="submit"class="btn btn-outline-danger">Delete this review</button></td>
+                            </form>
+                            {% endif %}
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -92,6 +98,13 @@
         </div>
     </div>
 </div>
+{% if admin %}
+<div class="center">
+    <form action="/drink/delete/{{ drink.id }}" method="GET">
+        <button type="submit"class="btn btn-outline-danger">Delete {{ drink.name }}</button>
+    </form>
+</div>
+{% endif %}
 {% endblock %}
 
 

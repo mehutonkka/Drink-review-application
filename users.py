@@ -27,7 +27,7 @@ def signup(username, password, password1):
     if not user:
         if password == password1:
             hash_value = generate_password_hash(password)
-            sql = text("INSERT INTO users (username, password) VALUES (:username, :password)")
+            sql = text("INSERT INTO users (username, password, admin) VALUES (:username, :password, False)")
             db.session.execute(sql, {"username":username, "password":hash_value})
             db.session.commit()
             return 0
@@ -37,7 +37,7 @@ def signup(username, password, password1):
 
 
 def list_profiles():
-    result = db.session.execute(text("SELECT username FROM users"))
+    result = db.session.execute(text("SELECT id, username FROM users"))
     return result.fetchall()
 
 
@@ -51,4 +51,27 @@ def top5_users():
     result = db.session.execute(sql)
     return result.fetchall()
 
+def check_admin():
+    result = db.session.execute(text("SELECT * FROM users WHERE admin='t'"))
+    if result.fetchall():
+        return True
+    else:
+        return False
 
+def is_admin(username):
+    result = db.session.execute(text("SELECT admin FROM users WHERE username=:username"), {"username":username})
+    result = result.fetchone()[0]
+    if result == True:
+        return result
+    
+def create_admin(username):
+    sql = text("UPDATE users SET admin = True WHERE username=:username")
+    db.session.execute(sql, {"username":username})
+    db.session.commit()
+
+def delete_user(user_id):
+    sql = text("DELETE FROM users WHERE id=:user_id")
+    db.session.execute(sql, {"user_id":user_id})
+    sql2 = text("DELETE FROM reviews WHERE user_id=:user_id")
+    db.session.execute(sql2, {"user_id":user_id})
+    db.session.commit()

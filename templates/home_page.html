@@ -48,4 +48,52 @@
         </table>
     </div>
 </div>
+<br><br>
+<div class="center">
+    <div class="ms-me-8">
+        <h4>Most recent reviews</h4>
+        <table class="table">
+            <thead class="table">
+                <tr class="center">
+                    <th scope="col">Username</th>
+                    <th scope="col">Drink name</th>
+                    <th scope="col">Score</th>
+                    <th scope="col">Written review</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for review in recent %}
+                <tr class="center">
+                    <td><a href="/profile/{{ review.username }}">{{ review.username }}</a></td>
+                    <td><a href="/drink/{{ review.drink_id }}">{{ review.name }}</a></td>
+                    <td>{{ review.score }}/10</td>
+                    <td>"{{ review.review }}"</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br><br>
+        <h4>New drinks added to the website</h4>
+        <table class="table">
+            <thead class="table">
+                <tr>
+                    <th scope="col">Drink name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Alcohol percentage</th>
+                    <th scope="col">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for drink in new %}
+                <tr>
+                    <td><a href="/drink/{{ drink.id }}">{{ drink.name }}</a></td>
+                    <td>{{ drink.category }}</td>
+                    <td>{{ drink.percentage }}%</td>
+                    <td>{{ drink.price }}€</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 {% endblock %}

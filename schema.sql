@@ -7,7 +7,8 @@ DROP TABLE IF EXISTS stores CASCADE;
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     username TEXT,
-    password TEXT
+    password TEXT,
+    admin BOOLEAN
 );
 
 CREATE TABLE categories (

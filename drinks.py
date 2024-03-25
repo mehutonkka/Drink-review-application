@@ -98,3 +98,21 @@ def top_10_drinks():
     sql = text("SELECT d.name, d.id, AVG(r.score)::numeric(10,1) from reviews r INNER JOIN drinks d ON r.drink_id=d.id GROUP BY d.name, d.id ORDER BY avg(r.score) DESC LIMIT 10")
     result = db.session.execute(sql)
     return result.fetchall()
+
+def recent_reviews():
+    result = db.session.execute(text("SELECT reviews.*, users.username, drinks.name FROM reviews, users, drinks WHERE reviews.user_id=users.id AND reviews.drink_id=drinks.id ORDER BY id DESC LIMIT 3"))
+    return result.fetchall()
+
+def new_drinks():
+    result = db.session.execute(text("SELECT d.*, c.category FROM drinks d, categories c WHERE CAST(d.category_id AS INTEGER)=c.id ORDER BY d.id DESC"))
+    return result.fetchmany(3)
+
+def delete(drink_id):
+    sql = text("DELETE FROM drinks WHERE id=:drink_id")
+    db.session.execute(sql, {"drink_id":drink_id})
+    db.session.commit()
+
+def delete_review(review_id):
+    sql = text("DELETE FROM reviews WHERE id=:review_id")
+    db.session.execute(sql, {"review_id":review_id})
+    db.session.commit()

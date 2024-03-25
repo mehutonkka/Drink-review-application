@@ -5,7 +5,11 @@
     <br>
     <h2>Profile for {{ username }}</h2>
     <br>
-
+    {% if admin %}
+    <form action="/admin" method="POST">
+        <button type="submit"class="btn btn-outline-danger">Become an admin</button>
+    </form>
+    {% endif %}
     <h5>All reviews from {{ username }}:</h5>
     <table class="table">
         <thead class="table">
