@@ -210,6 +210,8 @@ def add_review(drink_id):
 @app.route("/admin", methods=["POST","GET"])
 def admin_create():
     username = session["username"]
-    users.create_admin(username)
+    password = request.form["admin_password"]
+    if password=="Khakapyly":
+        users.create_admin(username)
     redir = str("/profile/"+username)
     return redirect(redir)

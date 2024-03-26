@@ -35,16 +35,11 @@ Admin to control reviews and other information.
 
 
 Current status:
-- Almost all functionalities are working
-- Still need to make sure that users can only put acceptable inputs
-- All of the styling must be done
+- All functionalities are working as intended
 - Code must be made more clean/efficient
+- Some styling to be done still
 
 
 New changes:
-- Added most recent 3 reviews on home page  
-- Added newly added drinks listed on front page
-- Created admin rights
-- Only one admin can be
-- Admin can delete drinks, reviews and users to keep things moderated/factual
-- Made the admin verifications into python so one cannot delete anything by abusing the html coding
+- Added password to become admin
+- Made navbar title link to home page
