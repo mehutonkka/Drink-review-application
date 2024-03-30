@@ -41,5 +41,7 @@ Current status:
 
 
 New changes:
-- Added password to become admin
-- Made navbar title link to home page
+- Implemented fly.io and deployed the web app
+
+Fly.io link:
+https://beverage-reviews.fly.dev/
