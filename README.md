@@ -1,5 +1,7 @@
 # Drink review application
-Ideas:
+Test the application with fly.io:
+https://beverage-reviews.fly.dev/
+
 An application for publishing reviews and scores on different **alcoholic drinks**.
 
 User creation and login to keep track of reviews and restrict one review/score per person on each drink. Also to bind reviews to distinct users.
@@ -21,9 +23,9 @@ Information about each drink:
 - store(s) from which can be found
 - all reviews listed
 
-Browsing option to browse drinks and the possibility to change the order by alphabetically, price, best score, etc.
+Browsing option to browse all drinks.
 
-Search system to find drinks based on their name or category.
+Search system to find drinks based on their name and/or category.
 
 Possibility to find all reviews made by a certain user.
 
@@ -31,7 +33,9 @@ Top 10 list of the best-scoring drinks.
 
 Top 5 list of contributors who have made the most reviews.
 
-Admin to control reviews and other information.
+Most recent reviews and drinks listed on home page.
+
+Admin to control reviews and other information (only one admin for now).
 
 
 Current status:
@@ -41,7 +45,5 @@ Current status:
 
 
 New changes:
-- Implemented fly.io and deployed the web app
+- 
 
-Fly.io link:
-https://beverage-reviews.fly.dev/
