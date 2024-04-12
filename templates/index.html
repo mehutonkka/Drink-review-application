@@ -2,16 +2,17 @@
 {% block content %}
 <div class="center">
     <br>
-    <h2>Welcome to the alcoholic beverage review application</h2>
+    <h2>Alcoholic beverage reviews</h2>
     <br>
-    
+    <p class="center"><i>Welcome to the alcoholic beverage reviews website.<br>
+        Please note that you have to login to review or add beverages.<br>
+    <b>By proceeding from this page you guarantee that you are of the legal drinking age.</b>
+    </i></p>
         
     
     <form action="/home_page" method="POST">
-        <input type="submit" class="btn btn-outline-secondary" value="Continue without logging in">
+        <input type="submit" class="btn btn-warning" value="Continue without logging in">
     </form>
-    <br>
-    <h5>Login to add reviews and new beverages</h5>
     
     
 </div>
@@ -27,7 +28,7 @@
         <input type="text" class="form-control" name="username" placeholder="Username"></p>
         <p>
         <input type="password" class="form-control" name="password" placeholder="Password"></p>
-        <input type="submit" class="btn btn-outline-secondary" value="Login">
+        <input type="submit" class="btn btn-warning" value="Login">
         </form>
         {% if login_message %}
         <p><b>{{ login_message }}</b></p>
@@ -46,7 +47,7 @@
         <input type="password" class="form-control" name="password1" placeholder="Password"></p>
         <p>
         <input type="password" class="form-control" name="password" placeholder="Confirm password"></p>
-        <input type="submit" class="btn btn-outline-secondary" value="Create account">
+        <input type="submit" class="btn btn-warning" value="Create account">
         </form>
         {% if signup_message %}
         <p><b>{{ signup_message }}</b></p>
@@ -55,7 +56,7 @@
     </div>
     
 </div>
-
-
+<br><br><br><br>
+<p class="center">Created by Mishka Hagelberg as a project for the course <i>Tietokannat ja web-ohjelmointi</i> at the University of Helsinki, Computer Science department.</p>
 {% endblock %}
 

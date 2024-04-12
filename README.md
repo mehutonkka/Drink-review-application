@@ -44,6 +44,10 @@ Current status:
 - Some styling to be done still
 
 
-New changes:
-- 
+New changes:(these changes do not yet appear on the fly.io website)
+- Made everything look more pleasant
+- Changed lots of colors to match the yellow theme of the website
+- Drew a logo of a beer pint and applied it to the navigation bar
+- Restricted access to see profiles without login
+- Added descriptive text to home page and the login/signup page
 

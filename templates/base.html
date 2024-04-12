@@ -13,22 +13,26 @@
       }
 
      
+      .bg-default {
+        --bs-bg-opacity: 1;
+        background-color: #bdbaa4;
+      }
 
 
       a:link {
-        color: darkred;
+        color: rgb(182, 133, 0);
         background-color: transparent;
         text-decoration: none;
       }
       
       a:visited {
-        color: darkred;
+        color: rgb(182, 133, 0);
         background-color: transparent;
         text-decoration: none;
       }
 
       a:hover {
-        color: rgb(194, 34, 34);
+        color: rgb(210, 203, 0);
         background-color: transparent;
         text-decoration: none;
       }
@@ -55,10 +59,12 @@
         }
       }
      
+    
+    
     </style>
   </head>
 
-  <body>
+  <body class="bg-default">
     {% include "navbar.html" %}
     {% block content %} {% endblock %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

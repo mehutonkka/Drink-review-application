@@ -35,7 +35,7 @@
 
         <br>
         <div class="input-group input-group-lg">
-        <input type="submit" class="btn btn-outline-secondary" value="Submit your review as {{ session['username'] }}">
+        <input type="submit" class="btn btn-warning" value="Submit your review as {{ session['username'] }}">
         <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
         {% if message %}
         <b>{{ message }}</b>

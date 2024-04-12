@@ -1,7 +1,8 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+ 
     <div class="container-fluid">
-      <a href="/home_page" class="navbar-brand"> Alcoholic beverage reviews</a>
+      <a href="/home_page" class="navbar-brand"><img src="{{ url_for('static', filename='images/beerlogo.png') }}" alt="beer_logo" width="65" height="65" class="d-inline-block align-text-middle">Alcoholic beverage reviews</a>
       
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -14,6 +15,10 @@
 
           <li class="nav-item">
             <a class="nav-link" href="/drinks">Browse and search beverages</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/recent">Recent additions to the website</a>
           </li>
 
           <li class="nav-item">
@@ -39,4 +44,5 @@
         </form>
       </div>
     </div>
+  
   </nav>

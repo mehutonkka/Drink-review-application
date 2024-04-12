@@ -1,14 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 <br>
-<h2 class="center">Welcome to the alcoholic beverage review application</h2>
-
+<h2 class="center">Alcoholic beverage reviews</h2>
+<p class="center"><i>This is a website for reviewing alcoholic beverages and comparing beverages based on their scoring.<br>
+    If you cannot find a certain beverage, feel free to add new beverages to the website from the 'Browse and search beverages' page.<br>
+    <b>(Note that you need to be logged in to review or add beverages.)</b>
+     </i></p>
 <div class="container">
     <div class="column">
         <br>
         <h4 class="center">Top 10 beverages based on average score:</h4>
 
-        <table class="table">
+        <table class="table table-striped table-warning">
             <thead class="table">
                 <tr class="center">
                     <th scope="col">Name</th>
@@ -30,7 +33,7 @@
         <br>
         <h4 class="center">Top 5 users with most reviews:</h4>
 
-        <table class="table">
+        <table class="table table-striped table-warning">
             <thead class="table">
                 <tr class="center">
                     <th scope="col">Username</th>
@@ -48,52 +51,6 @@
         </table>
     </div>
 </div>
-<br><br>
-<div class="center">
-    <div class="ms-me-8">
-        <h4>Most recent reviews</h4>
-        <table class="table">
-            <thead class="table">
-                <tr class="center">
-                    <th scope="col">Username</th>
-                    <th scope="col">Drink name</th>
-                    <th scope="col">Score</th>
-                    <th scope="col">Written review</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for review in recent %}
-                <tr class="center">
-                    <td><a href="/profile/{{ review.username }}">{{ review.username }}</a></td>
-                    <td><a href="/drink/{{ review.drink_id }}">{{ review.name }}</a></td>
-                    <td>{{ review.score }}/10</td>
-                    <td>"{{ review.review }}"</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <br><br>
-        <h4>New drinks added to the website</h4>
-        <table class="table">
-            <thead class="table">
-                <tr>
-                    <th scope="col">Drink name</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Alcohol percentage</th>
-                    <th scope="col">Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for drink in new %}
-                <tr>
-                    <td><a href="/drink/{{ drink.id }}">{{ drink.name }}</a></td>
-                    <td>{{ drink.category }}</td>
-                    <td>{{ drink.percentage }}%</td>
-                    <td>{{ drink.price }}€</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-</div>
+<br><br><br><br>
+<p class="center">Created by Mishka Hagelberg as a project for the course <i>Tietokannat ja web-ohjelmointi</i> at the University of Helsinki, Computer Science department.</p>
 {% endblock %}

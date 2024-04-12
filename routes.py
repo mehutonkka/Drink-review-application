@@ -62,11 +62,13 @@ def logout():
 def home_page():
     top10 = drinks.top_10_drinks()
     top5 = users.top5_users()
+    return render_template("home_page.html", top10=top10, top5=top5)
+
+@app.route("/recent")
+def recent():
     recent = drinks.recent_reviews()
     new = drinks.new_drinks()
-    return render_template("home_page.html", top10=top10, top5=top5, recent=recent, new=new)
-
-
+    return render_template("recent_activity.html", recent=recent, new=new)
 
     
 @app.route("/drinks")

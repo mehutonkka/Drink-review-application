@@ -2,6 +2,9 @@
 {% block content %}
 <div class="ms-me-8">
 <div class="center">
+    {% if not session['username'] %}
+    <h2>You need to login or sign up to see user profiles</h2>
+    {% else %}
     <br>
     <h2>Profile for {{ username }}</h2>
     <br>
@@ -12,7 +15,7 @@
     </form>
     {% endif %}
     <h5>All reviews from {{ username }}:</h5>
-    <table class="table">
+    <table class="table table-striped table-warning">
         <thead class="table">
             <tr>
                 <th scope="col">Beverage name</th>
@@ -32,4 +35,5 @@
     </table>
 </div>
 </div>
+{% endif %}
 {% endblock %}

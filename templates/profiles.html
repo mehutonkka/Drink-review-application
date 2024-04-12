@@ -2,19 +2,20 @@
 {% block content %}
 <div class="ms-me-8">
 <div class="center">
+    {% if session['username'] %}
     <br>
     <h2>All user profiles</h2>
     <br>
     <form action="/profiles_s" method="GET">
         <div class="input-group mb3">
             <input type="text" class="form-control" name="s_filter" placeholder="Search for username" aria-describedby="search_button">
-            <input type="submit" class="btn btn-outline-secondary" id="search_button" value="Search">
+            <input type="submit" class="btn btn-warning" id="search_button" value="Search">
         </div>
     </form>
+    <br><br>
 
 
-
-    <table class="table">
+    <table class="table table-striped table-warning">
         <thead class="table">
             <tr>
                 <th scope="col">Username</th>
@@ -33,6 +34,9 @@
             {% endfor %}
         </tbody>
     </table>
+    {% else %}
+    <h2>You need to login or sign up to browse user profiles</h2>
+    {% endif %}
 </div>
 </div>
 {% endblock %}
