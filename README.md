@@ -40,11 +40,10 @@ Admin to control reviews and other information (only one admin for now).
 
 Current status:
 - All functionalities are working as intended
-- Code must be made more clean/efficient
-- Some styling to be done still
-
+- Need to make signup/login and add beverage pages keep their info if given a false input etc.
 
 New changes:(these changes do not yet appear on the fly.io website)
-- On the give review page users old review and score is shown in the fields so that editing them is easier. If user has not already reviewed the beverage it will show as blank and 1 as a selected score.
+- Made validation more thorough in adding a new beverage
+- Made validation more thorough in login and signup
 
 

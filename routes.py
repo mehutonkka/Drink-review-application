@@ -16,6 +16,8 @@ def index():
 def login():
     username = request.form["username"]
     password = request.form["password"]
+    if not username or not password:
+        return render_template("index.html", login_message="Please make sure to put valid inputs in each field!")
     if len(username) > 20:
         return render_template("index.html", login_message="Username is too long!")
     if len(password) > 30:
@@ -40,6 +42,8 @@ def signup():
     username = request.form["username"]
     password = request.form["password"]
     password1 = request.form["password1"]
+    if not username or not password or not password1:
+        return render_template("index.html", signup_message="Please make sure to put valid inputs in each field!")
     if len(username) > 20:
         return render_template("index.html", signup_message="Username is too long!")
     if len(password) > 30:
@@ -165,6 +169,13 @@ def create_drink():
     category_id = request.form["drink_category"]
     store_ids = request.form.getlist("drink_store")
     price = request.form["drink_price"]
+    if not name or not percentage or not price:
+        return render_template(
+            "add_drink.html",
+            message="Please make sure to put valid inputs in each field!",
+            categories=categories,
+            stores=stores,
+        )
 
     if len(name) > 30:
         return render_template(
