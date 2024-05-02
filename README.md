@@ -33,17 +33,16 @@ Top 10 list of the best-scoring drinks.
 
 Top 5 list of contributors who have made the most reviews.
 
-Most recent reviews and drinks listed on home page.
+Most recent reviews and drinks listed on 'Recent additions to the website' page.
 
 Admin to control reviews and other information (only one admin for now).
 
 
 Current status:
 - All functionalities are working as intended
-- Need to make signup/login and add beverage pages keep their info if given a false input etc.
 
 New changes:(these changes do not yet appear on the fly.io website)
-- Made validation more thorough in adding a new beverage
-- Made validation more thorough in login and signup
+- Add beverage form now keeps given info if submit ends up in an error
+- Signup/login forms now keep their info if submit ends up in an error
 
 

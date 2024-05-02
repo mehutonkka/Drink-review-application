@@ -9,24 +9,36 @@
         <br>
         <div class="input-group mb-3">
             <label class="input-group-text" for="name_input">Beverage name:</label>
+            {% if name %}
+            <input type="text" name="drink_name" id="name_input" value="{{ name }}" required>
+            {% else %}
             <input type="text" name="drink_name" id="name_input" required>
+            {% endif %}
         </div>
         <br>
         <div class="input-group mb-3">
             <label class="input-group-text" for="percentage_input">Alcohol percentage (%)</label>
+            {% if percentage %}
+            <input type="number" step="0.1" name="drink_percentage" id="percentage_input" value="{{ percentage }}" required>
+            {% else %}
             <input type="number" step="0.1" name="drink_percentage" id="percentage_input" required>
+            {% endif %}
         </div>
         <br>
         <div class="input-group mb-3">
             <label class="input-group-text" for="price_input">Approximate price for the beverage (€):</label>
+            {% if price %}
+            <input type="number" step="0.01" name="drink_price" id="price_input" value="{{ price }}" required>
+            {% else %}
             <input type="number" step="0.01" name="drink_price" id="price_input" required>
+            {% endif %}
         </div>
         <br>
         <div class="input-group input-group-lg">
             <label class="input-group-text" for="category_select">What category best suits the beverage:</label>
             <select name="drink_category" class="form-select" id="category_select">
                 {% for category in categories %}
-                <option value="{{ category.category }}">{{ category.category }}</option>
+                <option value="{{ category.category }}" {% if category_id == category.category %}selected{% endif %}>{{ category.category }}</option>
                 {% endfor %}
             </select>
         </div>
@@ -34,7 +46,7 @@
         <p>From which stores can the beverage be found:</p>
         {% for store in stores %}
         <div class="form-check">
-            <input class="form-check-input" name="drink_store" type="checkbox" value="{{ store.name }}" id="select_stores">
+            <input class="form-check-input" name="drink_store" type="checkbox" value="{{ store.name }}" id="select_stores" {% if store.name in store_ids %}checked{% endif %}> 
             <label class="form-check-label" for="select_stores">
                 {{ store.name }}
             </label>

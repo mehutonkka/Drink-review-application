@@ -25,9 +25,17 @@
         
         <form action="/login" method="POST">
         <p>
+        {% if login_user %}
+        <input type="text" class="form-control" name="username" placeholder="Username" value="{{ login_user }}" required></p>
+        {% else %}
         <input type="text" class="form-control" name="username" placeholder="Username" required></p>
+        {% endif %}
         <p>
+        {% if login_pass %}
+        <input type="password" class="form-control" name="password" value="{{ login_pass }}" placeholder="Password" required></p>
+        {% else %}
         <input type="password" class="form-control" name="password" placeholder="Password" required></p>
+        {% endif %}
         <input type="submit" class="btn btn-warning" value="Login">
         </form>
         {% if login_message %}
@@ -42,11 +50,23 @@
         <h4>Sign up here</h4>
         <form action="/signup" method="POST">
         <p>
+        {% if signup_user %}
+        <input type="text" class="form-control" name="username" placeholder="Username" required value="{{ signup_user }}"></p>
+        {% else %}
         <input type="text" class="form-control" name="username" placeholder="Username" required></p>
+        {% endif %}
         <p>
+        {% if signup_pass1 %}
+        <input type="password" class="form-control" name="password1" placeholder="Password" required value="{{ signup_pass1 }}"></p>
+        {% else %}
         <input type="password" class="form-control" name="password1" placeholder="Password" required></p>
+        {% endif %}
         <p>
+        {% if signup_pass %}
+        <input type="password" class="form-control" name="password" placeholder="Confirm password" required value="{{ signup_pass }}"></p>
+        {% else %}
         <input type="password" class="form-control" name="password" placeholder="Confirm password" required></p>
+        {% endif %}
         <input type="submit" class="btn btn-warning" value="Create account">
         </form>
         {% if signup_message %}

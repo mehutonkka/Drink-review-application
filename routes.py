@@ -17,22 +17,45 @@ def login():
     username = request.form["username"]
     password = request.form["password"]
     if not username or not password:
-        return render_template("index.html", login_message="Please make sure to put valid inputs in each field!")
+        return render_template(
+            "index.html",
+            login_message="Please make sure to put valid inputs in each field!",
+            login_user=username,
+            login_pass=password,
+        )
     if len(username) > 20:
-        return render_template("index.html", login_message="Username is too long!")
+        return render_template(
+            "index.html",
+            login_message="Username is too long!",
+            login_user=username,
+            login_pass=password,
+        )
     if len(password) > 30:
-        return render_template("index.html", login_message="Password is too long!")
+        return render_template(
+            "index.html",
+            login_message="Password is too long!",
+            login_user=username,
+            login_pass=password,
+        )
 
     result = users.login(username, password)
     if result == 1:
-        return render_template("index.html", login_message="Incorrect username!")
+        return render_template(
+            "index.html",
+            login_message="Incorrect username!",
+            login_user=username,
+            login_pass=password,
+        )
     elif result == 0:
         session["username"] = username
         session["csrf_token"] = secrets.token_hex(16)
         return redirect("/home_page")
     else:
         return render_template(
-            "index.html", login_message="Incorrect username/password!"
+            "index.html",
+            login_message="Incorrect username/password!",
+            login_user=username,
+            login_pass=password,
         )
 
 
@@ -43,11 +66,29 @@ def signup():
     password = request.form["password"]
     password1 = request.form["password1"]
     if not username or not password or not password1:
-        return render_template("index.html", signup_message="Please make sure to put valid inputs in each field!")
+        return render_template(
+            "index.html",
+            signup_message="Please make sure to put valid inputs in each field!",
+            signup_user=username,
+            signup_pass=password,
+            signup_pass1=password1,
+        )
     if len(username) > 20:
-        return render_template("index.html", signup_message="Username is too long!")
+        return render_template(
+            "index.html",
+            signup_message="Username is too long!",
+            signup_user=username,
+            signup_pass=password,
+            signup_pass1=password1,
+        )
     if len(password) > 30:
-        return render_template("index.html", signup_message="Password is too long!")
+        return render_template(
+            "index.html",
+            signup_message="Password is too long!",
+            signup_user=username,
+            signup_pass=password,
+            signup_pass1=password1,
+        )
     result = users.signup(username, password, password1)
     if result == 0:
         session["username"] = username
@@ -55,11 +96,19 @@ def signup():
         return redirect("/home_page")
     elif result == 1:
         return render_template(
-            "index.html", signup_message="The two passwords do not match!"
+            "index.html",
+            signup_message="The two passwords do not match!",
+            signup_user=username,
+            signup_pass=password,
+            signup_pass1=password1,
         )
     else:
         return render_template(
-            "index.html", signup_message="That username is already in use!"
+            "index.html",
+            signup_message="That username is already in use!",
+            signup_user=username,
+            signup_pass=password,
+            signup_pass1=password1,
         )
 
 
@@ -175,6 +224,11 @@ def create_drink():
             message="Please make sure to put valid inputs in each field!",
             categories=categories,
             stores=stores,
+            name=name,
+            percentage=percentage,
+            category_id=category_id,
+            store_ids=store_ids,
+            price=price,
         )
 
     if len(name) > 30:
@@ -183,6 +237,11 @@ def create_drink():
             message="Beverage name too long!",
             categories=categories,
             stores=stores,
+            name=name,
+            percentage=percentage,
+            category_id=category_id,
+            store_ids=store_ids,
+            price=price,
         )
     elif float(percentage) > 100:
         return render_template(
@@ -190,6 +249,11 @@ def create_drink():
             message="The percentage cannot be that big!",
             categories=categories,
             stores=stores,
+            name=name,
+            percentage=percentage,
+            category_id=category_id,
+            store_ids=store_ids,
+            price=price,
         )
     elif float(price) > 100000:
         return render_template(
@@ -197,6 +261,11 @@ def create_drink():
             message="That price is way too big!",
             categories=categories,
             stores=stores,
+            name=name,
+            percentage=percentage,
+            category_id=category_id,
+            store_ids=store_ids,
+            price=price,
         )
     else:
         add = drinks.create_drink(name, percentage, category_id, store_ids, price)
