@@ -45,9 +45,7 @@ Current status:
 
 
 New changes:(these changes do not yet appear on the fly.io website)
-- Made everything look more pleasant
-- Changed lots of colors to match the yellow theme of the website
-- Drew a logo of a beer pint and applied it to the navigation bar
-- Restricted access to see profiles without login
-- Added descriptive text to home page and the login/signup page
+- Formatted the code to be more pleasent and so that too long rows do not exist
+- Added average scores to the drink details page
+- Added average scores of drinks to the browse drinks page
 

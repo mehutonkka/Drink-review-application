@@ -40,6 +40,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Alcohol percentage</th>
                 <th scope="col">Price</th>
+                <th scope="col">Average score</th>
             </tr>
         </thead>
         <tbody>
@@ -48,6 +49,7 @@
                 <td><a href="/drink/{{ drink.id }}">{{ drink.name }}</a></td>
                 <td>{{ drink.percentage }}%</td>
                 <td>{{ drink.price }}€</td>
+                <td>{{ drink.avg_score }}/10</td>
             </tr>
             {% endfor %}
         </tbody>

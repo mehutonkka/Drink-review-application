@@ -3,6 +3,9 @@
 <div>
     <br>
     <h2 class="center">{{ drink.name }}</h2>
+    
+    <h5 class="center">Average score:<br><b>{{ score }}/10</b></h5>
+    
     <form action="/review/give/{{ drink.id }}" class="center">
         <button class="btn btn-warning">Click here to review {{ drink.name }}</button>
     </form>
@@ -11,6 +14,7 @@
         <div class="column">
             <br>
             <h5 class="center">Details for {{ drink.name }}</h5>
+            
             
             <table class="table table-striped table-warning">
                 <thead class="table">
