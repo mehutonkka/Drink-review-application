@@ -11,7 +11,19 @@
         <div class="input-group input-group-lg">
         <label class="input-group-text" for="score_select">Give a score for {{ drink.name }}</label>
         <select name="score" class="form-select" id="score_select">
-        <option value="1" selected>1/10</option>
+        {% if review %}
+        <option value="1" {% if review.score  == 1 %}selected{% endif %}>1/10</option>
+        <option value="2" {% if review.score  == 2 %}selected{% endif %}>2/10</option>
+        <option value="3" {% if review.score  == 3 %}selected{% endif %}>3/10</option>
+        <option value="4" {% if review.score  == 4 %}selected{% endif %}>4/10</option>
+        <option value="5" {% if review.score  == 5 %}selected{% endif %}>5/10</option>
+        <option value="6" {% if review.score  == 6 %}selected{% endif %}>6/10</option>
+        <option value="7" {% if review.score  == 7 %}selected{% endif %}>7/10</option>
+        <option value="8" {% if review.score  == 8 %}selected{% endif %}>8/10</option>
+        <option value="9" {% if review.score  == 9 %}selected{% endif %}>9/10</option>
+        <option value="10" {% if review.score  == 10 %}selected{% endif %}>10/10</option>
+        {% else %}
+        <option value="1" selected >1/10</option>
         <option value="2">2/10</option>
         <option value="3">3/10</option>
         <option value="4">4/10</option>
@@ -21,6 +33,7 @@
         <option value="8">8/10</option>
         <option value="9">9/10</option>
         <option value="10">10/10</option>
+        {% endif %}
         </select>
         </div>
 
@@ -28,7 +41,11 @@
 
         <div class="input-group input-group-lg">
         <label class="input-group-text" for="review_area">Write a review for {{ drink.name }}</label>
+        {% if review %}
+        <textarea type="text" name="review" class="form-control" id="review_area">{{ review.review }}</textarea><br>
+        {% else %}
         <textarea type="text" name="review" class="form-control" id="review_area"></textarea><br>
+        {% endif %}
         </div>
 
 

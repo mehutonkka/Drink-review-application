@@ -240,6 +240,12 @@ def profile_search():
 @app.route("/review/give/<int:drink_id>", methods=["POST", "GET"])
 def give_review(drink_id):
     drink = drinks.drink_name(drink_id)
+    try:
+        review = drinks.user_review(session["username"], drink_id)
+    except KeyError:
+        review = False
+    if review:
+        return render_template("give_review.html", drink=drink, review=review)
     return render_template("give_review.html", drink=drink)
 
 

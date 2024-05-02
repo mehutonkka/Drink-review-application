@@ -263,3 +263,13 @@ def drink_score(drink_id):
     sql = text("SELECT AVG(score)::numeric(10,1) FROM reviews WHERE drink_id=:drink_id")
     result = db.session.execute(sql, {"drink_id": drink_id})
     return result.fetchone()[0]
+
+def user_review(user_name, drink_id):
+    user_id = int(
+        db.session.execute(
+            text("SELECT id FROM users where username=:name"), {"name": user_name}
+        ).fetchone()[0]
+    )
+    sql = text("SELECT * FROM reviews WHERE reviews.user_id=:user_id AND reviews.drink_id=:drink_id")
+    result = db.session.execute(sql, {"user_id": user_id, "drink_id": drink_id})
+    return result.fetchone()

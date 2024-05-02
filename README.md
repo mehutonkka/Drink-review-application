@@ -45,7 +45,6 @@ Current status:
 
 
 New changes:(these changes do not yet appear on the fly.io website)
-- Formatted the code to be more pleasent and so that too long rows do not exist
-- Added average scores to the drink details page
-- Added average scores of drinks to the browse drinks page
+- On the give review page users old review and score is shown in the fields so that editing them is easier. If user has not already reviewed the beverage it will show as blank and 1 as a selected score.
+
 
